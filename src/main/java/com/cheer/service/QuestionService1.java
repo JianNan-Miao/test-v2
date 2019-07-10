@@ -3,20 +3,28 @@ package com.cheer.service;
 
 import com.cheer.domain.Question;
 import com.cheer.service.impl.QuestionServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class QuestionService1 {
-    public static void main(String[] args) {
-        new QuestionService1().insertQuestion("d:/题目.xlsx");
-    }
+    @Autowired
+    private  QuestionService questionService;
+
+//    public static void main(String[] args) {
+//        new QuestionService1().insertQuestion("d:/题目.xlsx");
+//    }
     public void insertQuestion(String src){
-        QuestionServiceImpl qmi=new QuestionServiceImpl();
+//        QuestionServiceImpl qmi=new QuestionServiceImpl();
         WorkBooks workBooks=new WorkBooks();
         Map<Integer, List<String>> map = workBooks.readBook(src);
         List<String> list = map.get(1);
+//        System.out.println(list);
         List<String> titleList=new ArrayList<>();
         List<String> QAList=new ArrayList<>();
         List<String> QBList=new ArrayList<>();
@@ -48,10 +56,15 @@ public class QuestionService1 {
             answerList.add(answer);
         }
 
+//        System.out.println(titleList);
+//        System.out.println(QAList);
+
         for(int i=0;i<6;i++){
             Question question=new Question(i+1,titleList.get(i),QAList.get(i),
                     QBList.get(i),QCList.get(i),QDList.get(i),answerList.get(i));
-            qmi.insertQuestion(question);
+            System.out.println(question);
+            questionService.insertQuestion(question);
         }
+
     }
 }
