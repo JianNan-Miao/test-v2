@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .top{
+            margin: 0 auto;
+
+        }
+        h1{
+            margin-left: 600px;
+            color: red;
+
+        }
+        table {
+            margin: 50px auto 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+            vertical-align: center;
+        }
+        table, tr, td {
+            border: 1px solid black;
+        }
+        tr, td {
+            border: 1px solid black;
+            width: 200px;
+            height: 30px;
+        }
+        button {
+            width: 100px;
+            height: 34px;
+            border-radius: 12px;
+            border-width: 0;
+        }
+        div+div{
+            margin-top: 20px;
+        }
+        .end{
+            margin-left: 600px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="top">
+    <h1>考试成绩单</h1>
+</div>
+<div>
+    <table >
+        <tbody>
+        <tr>
+            <td>准考证号</td>
+            <td>答对</td>
+            <td>答错</td>
+            <td>漏答</td>
+            <td>分数</td>
+            <td>是否合格</td>
+        </tr>
+        <tr>
+            <td>[[${session.inf.id}]]</td>
+            <td>[[${session.inf.correct}]]</td>
+            <td>[[${session.inf.incorrect}]]</td>
+            <td>[[${session.inf.miss_answer}]]</td>
+            <td>[[${session.inf.score}]]</td>
+            <td>[[${session.inf.pass}]]</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+<div  class="end">
+    <button id="imports">确认</button>
+
+</div>
+
+
+</body>
+</html>
